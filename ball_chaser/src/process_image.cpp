@@ -75,7 +75,11 @@ void ProcessImage::process_image_callback(const sensor_msgs::Image img)
     srv.request.linear_x = 0.3;
     srv.request.angular_z = 0;
   }
-
+  else
+  {
+    srv.request.linear_x = 0;
+    srv.request.angular_z = 0.3;
+  }
   if (!drive_client.call(srv))
     ROS_ERROR("Failed to call service safe_move");
 
